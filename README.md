@@ -14,7 +14,7 @@ Web Forms | Learned how to create mobile friendly web forms with usability in mi
 
 ## Projects
 
-These are the finished source code for each of the five projects done in this course.
+These are the Description and location of the source code for each of the five projects done in this course.
 
 Project                   | Description                                                                           | Status      | link
 ------------------------- | ------------------------------------------------------------------------------------- | ----------- | --------------------------------
