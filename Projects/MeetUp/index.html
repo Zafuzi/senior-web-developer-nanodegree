@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <meta name="udacity-grader" content="./meetup_test.json"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="./dist/css/styles.css" rel="stylesheet">
+    <title>MeetUp</title>
+  </head>
+  <body>
+    <!-- <header class="row">
+      <div class="row center">
+        <h1 class="grey-text text-darken-2">MeetUp</h1>
+      </div>
+    </header> -->
+    <main class="padded">
+      <!-- Main Sign Up Form -->
+      <div class="row">
+        <div class="col s12 m6 l4 push-m3 push-l4">
+          <div class="card-panel">
+            <div class="row">
+              <div class="col s12 padded center grey-text text-darken-1 flow-text">
+                <h2 class="flow-text">Let's MeetUp</h2>
+              </div>
+              <form class="row signup-form" autocomplete="on">
+                <div class="col s12">
+                  <div class="input-field row">
+                    <i class="material-icons prefix">email</i>
+                    <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+                    <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
+                  </div>
+                </div>
+                <div class="col s12">
+                  <div class="input-field row">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <input type="password" name="password" id="password" required/>
+                    <label for="password" data-error="Your chosen password is not secure enough" data-success="&#10003;">What's a good password?</label>
+                  </div>
+                </div>
+                <button class="btn light-blue col s12" id="submit">Get Started</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  </body>
+</html>
