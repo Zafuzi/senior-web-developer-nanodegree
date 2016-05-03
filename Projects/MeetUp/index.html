@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="./dist/css/styles.css" rel="stylesheet">
+    <!-- TODO Consider using mustacheJS for better templating -->
     <title>MeetUp</title>
   </head>
   <body>
@@ -58,6 +59,7 @@
                   <div class="col s12">
                     <div class="input-field row">
                       <i class="material-icons prefix">vpn_key</i>
+                      <!-- REVIEW REGEX pattern is incomplete -->
                       <input type="password" name="password" id="password" class="validate" pattern=".{5,}" required/>
                       <label for="password" data-error="ERROR GOES HERE USING JQUERY" data-success="&#10003;">What's a good password?</label>
                     </div>
@@ -85,6 +87,7 @@
                       </div>
                     </div>
                   </div>
+
                 </form>
                 <div class="row center">
                   <div class="col s12 m6 push-m3">

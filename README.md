@@ -22,7 +22,7 @@ Restaurant Reviewer       | A restaurant review application with a focus on acce
 Corporate Dashboard       | A corporate dashboard application that uses a front-end MVC framework of my choosing. | Not Started | [Dashboard](/Projects/Dashboard)
 Capstone Project          | An application using native features developed entirely by me                         | Not Started | [Capstone](/Projects/Capstone)
 
-### TODO
+### TODO [Todos](/TODO.md)
 
 #### MeetUp
 

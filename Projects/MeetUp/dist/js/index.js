@@ -6,7 +6,6 @@ $(function(){
   var name = name_input.val(),
       email = email_input.val();
 
-
   $('.submitBTN').click(function(){
     name = name_input.val();
     email = email_input.val();
@@ -19,6 +18,7 @@ $(function(){
 
   $('.finishBTN').click(function(){
     $('.finish-form').slideToggle(500);
+    // @TODO:20 Fake this form submitting into the event creation. Or not depending on what I learn in the rest of the lesson. Basically I mean if we learn node and gulp stuff that allows for data submission then go ahead and implement it. It can't really hurt at this point, plus it will be a fun side project.
   });
 
   $('#addInfo').click(function(){
@@ -31,7 +31,7 @@ $(function(){
       $('#birthDay').val('');
     }
   });
-  
+
   $('#birthday').datepicker({
       dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       changeYear: true,
@@ -39,3 +39,6 @@ $(function(){
       yearRange: "-100:+0",
   });
 });
+
+// TODO:0 add password validation function
+// TODO:10 build the event page JS
