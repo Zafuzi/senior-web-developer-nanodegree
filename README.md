@@ -21,5 +21,3 @@ Public Transportation App | An application that allows users to select a departu
 Restaurant Reviewer       | A restaurant review application with a focus on accessibility.                        | Not Started | [Review](/Projects/Review)
 Corporate Dashboard       | A corporate dashboard application that uses a front-end MVC framework of my choosing. | Not Started | [Dashboard](/Projects/Dashboard)
 Capstone Project          | An application using native features developed entirely by me                         | Not Started | [Capstone](/Projects/Capstone)
-
-### TODO [Todos](/README_TODO.md)
