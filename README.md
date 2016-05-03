@@ -1,5 +1,3 @@
-![Udacity](https://pbs.twimg.com/profile_images/703090165976162305/XU5nh5a9_400x400.jpg)
-
 # senior-web-developer-nanodegree
 
 This repository is meant to organize all my code for the Udacity Senior Web Developer Nanodegree. I began this course on 5/2/16.
