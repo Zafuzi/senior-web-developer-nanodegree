@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Quiz - One Big, Ugly Form</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body>
+    <header class="margin-bottom-20 padding-top-40 padding-bottom-40 blue-grey white-text center">
+      <h1>ship it</h1>
+    </header>
+    <main>
+      <section class="row center">
+        <form class="input-group col s12" autocomplete>
+          <div class="container">
+            <fieldset class="no-border container">
+              <div class="row">
+                <h5 class="grey-text">Where should we send this?</h5>
+              </div>
+              <div class="row">
+                <input class="input-field margin-right col s12 m6 push-m3" id="name" type="text" placeholder="Name">
+              </div>
+              <div class="row">
+                <input class="input-field margin-right col s12 m6 push-m3" id="address" type="text" placeholder="Address">
+              </div>
+            </fieldset>
+          </div>
+          <div class="container">
+            <fieldset class="no-border container">
+              <div class="row">
+                <h5 class="grey-text"> Your Credit Card Information </h5>
+              </div>
+              <div class="row">
+                <input class="input-field margin-right col s12 m6 push-m3" name="ccname" id="frmNameCC" placeholder="Name on card" required  autocomplete="cc-name">
+              </div>
+              <div class="row">
+                <div>
+                  <input class="input-field col s12 m6 push-m3" name="cardnumber" id="frmCCNum" placeholder="Card Number" required autocomplete="cc-number">
+                </div>
+                <div class="col s12 padding-left-0">
+                  <div class="margin-right-20 col s6 m3 push-m3">
+                    <input class="input-field" name="cc-exp" id="frmCCExp" placeholder="EXP - MM/YY" required autocomplete="cc-exp">
+                  </div>
+                  <div class="col s5 m3 push-m3">
+                    <input class="input-field" name="cvc" id="frmCCCVC" placeholder="CVC" required autocomplete="cc-csc">
+                  </div>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </form>
+        <div class="col s12">
+          <div class="container">
+            <div class="row padding-20">
+              <div class="col s12 m6 push-m3">
+                <div class="col s12 l6 margin-bottom-20">
+                  <input id="cb" type="checkbox">
+                  <label for="cb">My order is correct</label>
+                </div>
+                <div class="col s12 l6">
+                  <button class="btn waves-effect light-blue margin-left-20" type="submit">Submit</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="node_modules\jquery\dist\jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+  </body>
+</html>

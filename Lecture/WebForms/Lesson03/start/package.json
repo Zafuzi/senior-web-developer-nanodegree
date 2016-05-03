@@ -1,0 +1,14 @@
+{
+  "name": "start",
+  "version": "1.0.0",
+  "description": "Web form quiz for SrFEND Udacity",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ZacharyFoutz",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^2.2.3"
+  }
+}
