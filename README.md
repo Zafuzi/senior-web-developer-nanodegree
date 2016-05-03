@@ -23,9 +23,3 @@ Corporate Dashboard       | A corporate dashboard application that uses a front-
 Capstone Project          | An application using native features developed entirely by me                         | Not Started | [Capstone](/Projects/Capstone)
 
 ### TODO [Todos](/TODO.md)
-
-#### MeetUp
-
-- [ ] Add validation for password
-- [ ] Start the event page
-- [ ] Finish the form submission (Fake it)
