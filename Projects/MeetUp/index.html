@@ -10,37 +10,88 @@
     <title>MeetUp</title>
   </head>
   <body>
-    <!-- <header class="row">
-      <div class="row center">
-        <h1 class="grey-text text-darken-2">MeetUp</h1>
-      </div>
-    </header> -->
     <main class="padded">
       <!-- Main Sign Up Form -->
       <div class="row">
         <div class="col s12 m6 l4 push-m3 push-l4">
-          <div class="card-panel">
+          <div class="container">
             <div class="row">
-              <div class="col s12 padded center grey-text text-darken-1 flow-text">
-                <h2 class="flow-text">Let's MeetUp</h2>
+
+              <div class="frontpage-form">
+                <div class="col s12 center grey-text text-darken-1 flow-text">
+                  <h2 class="flow-text">Let's MeetUp</h2>
+                </div>
+                <form class="row flow-text" autocomplete="on">
+                  <div class="col s12">
+                    <div class="input-field row">
+                      <i class="material-icons prefix">account_circle</i>
+                      <input type="text" name="fname" id="fname" required/>
+                      <label for="fname">What's your name?</label>
+                    </div>
+                  </div>
+                  <div class="col s12">
+                    <div class="input-field row">
+                      <i class="material-icons prefix">email</i>
+                      <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+                      <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
+                    </div>
+                  </div>
+                </form>
+                <div class="row center">
+                  <div class="col s12 m6 push-m3">
+                    <button class="btn light-blue submitBTN">Sign Up</button>
+                  </div>
+                </div>
               </div>
-              <form class="row signup-form" autocomplete="on">
-                <div class="col s12">
-                  <div class="input-field row">
-                    <i class="material-icons prefix">email</i>
-                    <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
-                    <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
+
+              <div class="finish-form hide">
+                <form class="row flow-text" autocomplete="on">
+                  <div class="col s12">
+                    <div class="input-field row">
+                      <div class="col s12 center">
+                        <i class="material-icons large light-blue-text">tag_faces</i>
+                        <h4 class="grey-text text-darken-2"> Welcome to MeetUp <span class="grey-text" id="namedrop">Zach</span></h4>
+                      </div>
+                      <h5 class="center col s8 push-s2 grey-text text-lighten-1"> Just one more step and you are ready to go. </h5>
+                    </div>
+                  </div>
+                  <div class="col s12">
+                    <div class="input-field row">
+                      <i class="material-icons prefix">vpn_key</i>
+                      <input type="password" name="password" id="password" class="validate" pattern=".{5,}" required/>
+                      <label for="password" data-error="ERROR GOES HERE USING JQUERY" data-success="&#10003;">What's a good password?</label>
+                    </div>
+                    <div class="col s10 push-s1">
+                      <p>
+                        <input type="checkbox" id="addInfo"/>
+                        <label for="addInfo">Add more info</label>
+                      </p>
+                      <div class="moreinfo container hide">
+                        <div class="input-field row">
+                          <i class="material-icons prefix">work</i>
+                          <input type="text" name="employer" id="employer"/>
+                          <label for="employer">Employer</label>
+                        </div>
+                        <div class="input-field row">
+                          <i class="material-icons prefix">assignment_ind</i>
+                          <input type="text" name="jobTitle" id="jobTitle"/>
+                          <label for="jobTitle">Job Title</label>
+                        </div>
+                        <div class="input-field row">
+                          <i class="material-icons prefix">cake</i>
+                          <input type="text" name="birthday" id="birthday"/>
+                          <label for="birthday">Birthday</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+                <div class="row center">
+                  <div class="col s12 m6 push-m3">
+                    <button class="btn light-blue finishBTN">Finish</button>
                   </div>
                 </div>
-                <div class="col s12">
-                  <div class="input-field row">
-                    <i class="material-icons prefix">vpn_key</i>
-                    <input type="password" name="password" id="password" required/>
-                    <label for="password" data-error="Your chosen password is not secure enough" data-success="&#10003;">What's a good password?</label>
-                  </div>
-                </div>
-                <button class="btn light-blue col s12" id="submit">Get Started</button>
-              </form>
+              </div>
             </div>
           </div>
         </div>
@@ -49,5 +100,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script async src="dist/js/index.js"></script>
   </body>
 </html>
