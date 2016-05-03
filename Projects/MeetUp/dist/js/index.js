@@ -7,3 +7,5 @@ $(function(){
 submit.onClick = function(){
   console.log("Clicked!");
 }
+
+// GIT COMMIT TEST
