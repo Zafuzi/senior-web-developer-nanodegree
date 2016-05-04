@@ -14,6 +14,9 @@
 
 /* PADDING RULES */
   /* PADDING BASE RULES */
+    .padding-auto{
+      padding: auto !important;
+    }
     .padding-0{
       padding: 0px !important;
     }
@@ -97,6 +100,9 @@
 
 /* MARGIN RULES */
   /* MARGIN BASE RULES */
+    .margin-auto{
+      margin: auto !important;
+    }
     .margin-0{
       margin: 0px !important;
     }
