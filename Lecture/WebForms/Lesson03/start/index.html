@@ -14,85 +14,60 @@
     <header class="margin-bottom-20 padding-top-40 padding-bottom-40 blue-grey white-text center">
       <h1>ship it</h1>
     </header>
+
     <main class="row center">
-
-
       <section class="container">
         <div class="row">
           <div class="col s12 m6 push-m3">
             <div class="card">
               <div class="card-image">
-                <img src="images/rift.jpg" class="responsive-img" alt="Occulus Rift"/>
+                <img src="/images/rift.jpg" width="1280" height="720" class="responsive-img" alt="Occulus Rift"/>
                 <h3 class="grey-text card-title">Occulus Rift Bundle - $599</h3>
               </div>
               <div class="card-content">
-
-                <ul class="collapsible" data-collapsible="accordion">
-                  <li>
-                    <div class="collapsible-header active">Saved information</div>
-                    <div class="collapsible-body">
-                      <div class="input-field col s12">
-                        <select class="container">
-                          <option value="" disabled>Select an address</option>
-                          <option value="1" selected>Home      ****1234</option>
-                          <option value="2">Corporate ****4321</option>
-                          <option value="3">Mom's     ****1324</option>
-                        </select>
+                <form class="input-group row" autocomplete>
+                  <fieldset class="no-border col s12 m8 push-m2">
+                    <div class="col s12">
+                      <div class="row margin-bottom-0">
+                        <p class="grey-text flow-text center">Shipping info</p>
+                        <div class="margin-left-10 col s12">
+                          <input class="input-field" id="name" type="text" placeholder="Name">
+                        </div>
+                        <div class="margin-left-10 col s12">
+                          <input class="input-field" id="address" type="text" placeholder="Address">
+                        </div>
                       </div>
                     </div>
-                  </li>
-                  <li>
-                    <div class="collapsible-header">Add a new address</div>
-                    <div class="collapsible-body">
-                      <form class="input-group row" autocomplete>
-                        <fieldset class="no-border col s12 m8 push-m2">
-                          <div class="col s12">
-                            <div class="row margin-bottom-0">
-                              <p class="grey-text flow-text center">Shipping info</p>
-                              <div class="margin-left-10 col s12">
-                                <input class="input-field" id="name" type="text" placeholder="Name">
-                              </div>
-                              <div class="margin-left-10 col s12">
-                                <input class="input-field" id="address" type="text" placeholder="Address">
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                        <fieldset class="no-border col s12 m8 push-m2">
-                          <div class="col s12">
-                            <div class="row">
-                              <div class="margin-left-10 col s12">
-                                <input class="input-field" name="cardnumber" id="frmCCNum" placeholder="Card Number" required autocomplete="cc-number">
-                              </div>
-                              <div class="col s6">
-                                <input class="input-field margin-left-10" name="cc-exp" id="frmCCExp" placeholder="EXP - MM/YY" required autocomplete="cc-exp">
-                              </div>
-                              <div class="col s6">
-                                <input class="input-field" name="cvc" id="frmCCCVC" placeholder="CVC" required autocomplete="cc-csc">
-                              </div>
-                            </div>
-                          </div>
-                        </fieldset>
-                      </form>
+                  </fieldset>
+                  <fieldset class="no-border col s12 m8 push-m2">
+                    <div class="col s12">
+                      <div class="row">
+                        <div class="margin-left-10 col s12">
+                          <input class="input-field" name="cardnumber" id="frmCCNum" placeholder="Card Number" required autocomplete="cc-number">
+                        </div>
+                        <div class="col s6">
+                          <input class="input-field margin-left-10" name="cc-exp" id="frmCCExp" placeholder="EXP - MM/YY" required autocomplete="cc-exp">
+                        </div>
+                        <div class="col s6">
+                          <input class="input-field" name="cvc" id="frmCCCVC" placeholder="CVC" required autocomplete="cc-csc">
+                        </div>
+                      </div>
                     </div>
-                  </li>
-                </ul>
-
-
+                  </fieldset>
+                </form>
               </div>
               <div class="card-action">
                 <input id="cb" type="checkbox">
                 <label for="cb">This information is correct</label>
-                <button class="btn waves-effect light-blue margin-left-20" type="submit">Submit</button>
+                <button class="btn waves-effect light-blue margin-left-20" type="submit">Checkout</button>
               </div>
             </div>
           </div>
         </div>
       </section>
     </main>
-
     <script src="node_modules\jquery\dist\jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <script src="js/index.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    <script async defer src="js/index.js"></script>
   </body>
 </html>

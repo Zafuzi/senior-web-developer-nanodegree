@@ -75,12 +75,12 @@ body, html{
 }
 /* label focus color */
 .input-field input:focus + label {
-  color: #64b5f6 !important;
+  color: #ff8a65 !important;
 }
 /* label underline focus color */
 .input-field input:focus {
- border-bottom: 1px solid #64b5f6 !important;
- box-shadow: 0 1px 0 0 #64b5f6 !important;
+ border-bottom: 1px solid #ff8a65 !important;
+ box-shadow: 0 1px 0 0 #ff8a65 !important;
 }
 /* valid color */
 .input-field input.valid {
@@ -97,5 +97,5 @@ body, html{
   color: #9e9e9e;
 }
 .input-field .prefix.active {
- color: #64b5f6;
+ color: #ff8a65;
 }

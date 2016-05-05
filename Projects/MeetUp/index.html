@@ -1,14 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html amp lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <meta name="udacity-grader" content="./meetup_test.json"> -->
+    <link rel="canonical" href="http://example.ampproject.org/article-metadata.html" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="./dist/css/styles.css" rel="stylesheet">
     <!-- TODO Consider using mustacheJS for better templating -->
-    <title>MeetUp</title>
+    <title>shindig</title>
+
+    <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "NewsArticle",
+        "headline": "Open-source framework for publishing content",
+        "datePublished": "2015-10-07T12:02:41Z",
+        "image": [
+          "logo.jpg"
+        ]
+      }
+    </script>
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
   </head>
   <body>
     <main class="padded">
@@ -20,7 +35,13 @@
 
               <div class="frontpage-form">
                 <div class="col s12 center grey-text text-darken-1 flow-text">
-                  <h2 class="flow-text">Let's MeetUp</h2>
+                  <p class="row deep-orange-text text-lighten-2 flow-text">
+                    <b class="deep-orange-text text-lighten-2">let's plan a</b>
+                    <small class="grey-text text-lighten-1">
+                      ball, barbeque, bash, feast, reception, get-together,
+                    </small>
+                    <b class="deep-orange-text text-lighten-2">shindig</b>
+                  </p>
                 </div>
                 <form class="row flow-text" autocomplete="on">
                   <div class="col s12">
@@ -40,7 +61,7 @@
                 </form>
                 <div class="row center">
                   <div class="col s12 m6 push-m3">
-                    <button class="btn light-blue submitBTN">Sign Up</button>
+                    <button class="btn deep-orange lighten-3 submitBTN">Sign Up</button>
                   </div>
                 </div>
               </div>
@@ -49,9 +70,9 @@
                 <form class="row flow-text" autocomplete="on">
                   <div class="col s12">
                     <div class="input-field row">
-                      <div class="col s12 center">
-                        <i class="material-icons large light-blue-text">tag_faces</i>
-                        <h4 class="grey-text text-darken-2"> Welcome to MeetUp <span class="grey-text" id="namedrop">Zach</span></h4>
+                      <div class="col s12 center deep-orange-text text-lighten-2">
+                        <i class="material-icons large">tag_faces</i>
+                        <h4 class=""> Welcome to shindig <span class="grey-text" id="namedrop">Zach</span></h4>
                       </div>
                       <h5 class="center col s8 push-s2 grey-text text-lighten-1"> Just one more step and you are ready to go. </h5>
                     </div>
