@@ -7,9 +7,9 @@ This repository is meant to organize all my code for the Udacity Senior Web Deve
 These are all the files created and used from watching the sections for each course. Each Section may have additional lessons.
 
 Lecture       | Description                                                             | Status   | link
-------------- | ----------------------------------------------------------------------- | -------- | ----------------------------------
+------------- | ----------------------------------------------------------------------- | -------- | --------------------------------------
 Web Forms     | Learned how to create mobile friendly web forms with usability in mind  | FINISHED | [Web Forms](/Lecture/WebForms)
-Touch Support | Learned how different css selectors can drastically change UX on mobile | WORKING  | [Web Forms](/Lecture/TouchSupport)
+Touch Support | Learned how different css selectors can drastically change UX on mobile | WORKING  | [Touch Support](/Lecture/TouchSupport)
 
 ## Projects
 
