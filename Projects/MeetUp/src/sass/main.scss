@@ -1,0 +1,73 @@
+@import "components/reset";
+
+
+//colors
+$white: #fff;
+$black_50: rgba(0, 0, 0, .5);
+$color_cerulean_approx: #03a9f4;
+$color_black_haze_approx: #f7f7f7;
+$seashell: #f1f1f1;
+$color_pink_swan_approx: #bbb;
+$black: #000;
+
+//@extend-elements
+//original selectors
+//.ui-datepicker-prev, .ui-datepicker-next
+%extend_1 {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	line-height: 600%;
+}
+
+
+.ui-datepicker {
+	width: auto;
+	height: auto;
+	margin: 5px auto 0;
+	background-color: $white;
+	//Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+	box-shadow: 0 0 10px 0 $black_50;
+	a {
+		text-decoration: none;
+		color: $color_cerulean_approx;
+	}
+	table {
+		width: 100%;
+	}
+	thead {
+		background-color: $color_black_haze_approx;
+		background-image: linear-gradient(top, $color_black_haze_approx 0, $seashell 100%);
+		border-bottom: 1px solid $color_pink_swan_approx;
+	}
+	.ui-datepicker-title select {
+		background-color: $white;
+		color: $black;
+		display: inline-block;
+	}
+}
+.ui-datepicker-header {
+	background-color: $color_cerulean_approx;
+	color: $white;
+	font-weight: bold;
+	font-size: 1.2rem;
+	line-height: 30px;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	a {
+		color: $white;
+		margin: 0 4rem;
+		cursor: pointer;
+	}
+}
+.ui-datepicker-prev {
+	@extend %extend_1;
+}
+.ui-datepicker-next {
+	@extend %extend_1;
+}
+.ui-datepicker-title {
+	text-align: center;
+	margin-top: -2rem;
+}

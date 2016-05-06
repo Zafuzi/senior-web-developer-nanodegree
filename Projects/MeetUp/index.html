@@ -1,103 +1,78 @@
 <!DOCTYPE html>
-<html amp lang="en">
+<html>
+
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <meta name="udacity-grader" content="./meetup_test.json"> -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="./dist/css/styles.css" rel="stylesheet">
-    <!-- TODO Consider using mustacheJS for better templating -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>shindig</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="dist/css/materialize.css" rel="stylesheet">
+    <link href="dist/css/main.css" rel="stylesheet">
   </head>
+
   <body>
-    <main class="padded">
-      <!-- Main Sign Up Form -->
+
+    <nav>
+      <div class="nav-wrapper compact labeled">
+        <!-- TODO Move to mobile friendly nav -->
+        <ul>
+          <li>
+            <span href="#" class="brand-logo center">shindig</span>
+          </li>
+          <li>
+            <a href="dist/html/events.html" class=""><i class="material-icons left">event</i><span class="hide-on-small-only">Events</span></a>
+          </li>
+          <li class="right">
+            <a href="dist/html/register_group.html" class="btn waves-effect">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="grey-text">
       <div class="row">
-        <div class="col s12 m6 l4 push-m3 push-l4">
-          <div class="container">
+        <div class="col s12 m10 l8 push-m1 push-l2">
+          <div class="center white grey-text text-darken-2">
             <div class="row">
-              <div class="frontpage-form">
-                <div class="col s12 center grey-text text-darken-1 flow-text">
-                  <p class="row deep-orange-text text-lighten-2 flow-text">
-                    <b class="deep-orange-text text-lighten-2">let's plan a</b>
-                    <small class="grey-text text-lighten-1">
-                      ball, barbeque, bash, feast, reception, get-together,
-                    </small>
-                    <b class="deep-orange-text text-lighten-2">shindig</b>
-                  </p>
-                </div>
-                <form class="row flow-text" autocomplete="on">
-                  <div class="col s12">
-                    <div class="input-field row">
-                      <i class="material-icons prefix">account_circle</i>
-                      <input type="text" name="fname" id="fname" required/>
-                      <label for="fname">What's your name?</label>
-                    </div>
-                  </div>
-                  <div class="col s12">
-                    <div class="input-field row">
-                      <i class="material-icons prefix">email</i>
-                      <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
-                      <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
-                    </div>
-                  </div>
-                </form>
-                <div class="row center">
-                  <div class="col s12 m6 push-m3">
-                    <button class="btn deep-orange lighten-3 submitBTN">Sign Up</button>
+              <div class="container">
+                <div class="row">
+                  <!-- FIXME set default TEXT color to grey instead of white -->
+                  <div class="col s12 grey-text text-darken-4">
+                    <a href="dist/html/register_group.html">
+                      <img src="src/images/group_003.jpg" class="responsive-img" />
+                    </a>
+                    <h3 class="">Get together and make new memories.</h3>
+                    <p class="flow-text col s12 m10 push-m1">shindig is a unique way to create events and share them instantly with the entire world.</p>
                   </div>
                 </div>
               </div>
-
-              <div class="finish-form hide">
-                <form class="row flow-text" autocomplete="on">
-                  <div class="col s12">
-                    <div class="input-field row">
-                      <div class="col s12 center deep-orange-text text-lighten-2">
-                        <i class="material-icons large">tag_faces</i>
-                        <h4 class=""> Welcome to shindig <span class="grey-text" id="namedrop">Zach</span></h4>
-                      </div>
-                      <h5 class="center col s8 push-s2 grey-text text-lighten-1"> Just one more step and you are ready to go. </h5>
-                    </div>
-                  </div>
-                  <div class="col s12">
-                    <div class="input-field row">
-                      <i class="material-icons prefix">vpn_key</i>
-                      <!-- REVIEW REGEX pattern is incomplete -->
-                      <input type="password" name="password" id="password" class="validate" pattern=".{5,}" required/>
-                      <label for="password" data-error="ERROR GOES HERE USING JQUERY" data-success="&#10003;">What's a good password?</label>
-                    </div>
-                    <div class="col s10 push-s1">
-                      <p>
-                        <input type="checkbox" id="addInfo"/>
-                        <label for="addInfo">Add more info</label>
-                      </p>
-                      <div class="moreinfo container hide">
-                        <div class="input-field row">
-                          <i class="material-icons prefix">work</i>
-                          <input type="text" name="employer" id="employer"/>
-                          <label for="employer">Employer</label>
-                        </div>
-                        <div class="input-field row">
-                          <i class="material-icons prefix">assignment_ind</i>
-                          <input type="text" name="jobTitle" id="jobTitle"/>
-                          <label for="jobTitle">Job Title</label>
-                        </div>
-                        <div class="input-field row">
-                          <i class="material-icons prefix">cake</i>
-                          <input type="text" name="birthday" id="birthday"/>
-                          <label for="birthday">Birthday</label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </form>
-                <div class="row center">
-                  <div class="col s12 m6 push-m3">
-                    <button class="btn light-blue finishBTN">Finish</button>
-                  </div>
+              <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">get started!</a>
+            </div>
+            <!-- TODO clean this section up and come up with better selling points -->
+            <div class="grey-text text-darken-4">
+              <div class="row">
+                <div class="col s4 grey-text text-darken-4">
+                  <h3>Fast</h3>
+                  <span class="flow-text">Our system allows you to connect with anyone in the world at any time.</span>
+                </div>
+                <div class="col s4 grey-text text-darken-4">
+                  <h3>Easy</h3>
+                  <span class="flow-text">Don't want a big hassle? We get you, that's why it only takes three steps to make an event.</span>
+                </div>
+                <div class="col s4 grey-text text-darken-4">
+                  <h3>Fun</h3>
+                  <span class="flow-text">Meeting new people is always fun, but don't take our word for it, share your events and see for yourself.</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s4">
+                  <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">more</a>
+                </div>
+                <div class="col s4">
+                  <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">more</a>
+                </div>
+                <div class="col s4">
+                  <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">more<a>
                 </div>
               </div>
             </div>
@@ -106,9 +81,9 @@
       </div>
     </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
-    <script async src="dist/js/index.js"></script>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="dist/js/materialize.min.js"></script>
+    <script src="dist/js/main.js"></script>
   </body>
+
 </html>
