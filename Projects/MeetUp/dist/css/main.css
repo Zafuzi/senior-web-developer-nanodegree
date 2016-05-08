@@ -321,8 +321,15 @@ ul {
   ul li a {
     text-decoration: none; }
 
-body {
-  font: 1rem Helvetica, sans-serif; }
+body, html {
+  font: 1rem Helvetica, sans-serif;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; }
+
+* {
+  margin: 0;
+  padding: 0; }
 
 .ui-datepicker-prev, .ui-datepicker-next {
   width: 30px;

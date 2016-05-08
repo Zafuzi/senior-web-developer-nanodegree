@@ -11,79 +11,138 @@
   </head>
 
   <body>
+    <!-- NAVBAR -->
+    <template id="nav_template" type="text/x-handlebars-template">
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a onclick="route('landing_page');" class="brand-logo">shindig</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse">
+              <i class="material-icons">menu</i>
+            </a>
 
-    <nav>
-      <div class="nav-wrapper compact labeled">
-        <!-- TODO Move to mobile friendly nav -->
-        <ul>
-          <li>
-            <span href="#" class="brand-logo center">shindig</span>
-          </li>
-          <li>
-            <a href="dist/html/events.html" class=""><i class="material-icons left">event</i><span class="hide-on-small-only">Events</span></a>
-          </li>
-          <li class="right">
-            <a href="dist/html/register_group.html" class="btn waves-effect">Sign In</a>
-          </li>
-        </ul>
+            <!-- NON MOBILE NAVBAR -->
+            <ul class="right hide-on-med-and-down">
+              <li>
+                <a onclick="route('events');" class="">
+                  <i class="material-icons left">event</i>
+                  <span class="hide-on-small-only">Events</span>
+                </a>
+              </li>
+              <li class="right">
+                <a onclick="route('register');" class="btn waves-effect">Login/Register</a>
+              </li>
+            </ul>
+
+            <!-- MOBILE NAVBAR ONLY -->
+            <ul class="side-nav" id="mobile-nav">
+              <!-- TODO add support for profile views. -->
+              <li class="row right-align" id="profile_template_container">
+                <a onclick="route('register'); $('.button-collapse').sideNav('hide');" class="btn waves-effect">Login/Register</a>
+              </li>
+              <li class="row">
+                <a onclick="route('events'); $('.button-collapse').sideNav('hide');" class="">
+                  <i class="material-icons left">event</i>
+                  Events
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-    </nav>
+    </template>
 
-    <main class="grey-text">
-      <div class="row">
-        <div class="col s12 m10 l8 push-m1 push-l2">
-          <div class="center white grey-text text-darken-2">
-            <div class="row">
-              <div class="container">
-                <div class="row">
-                  <!-- FIXME set default TEXT color to grey instead of white -->
-                  <div class="col s12 grey-text text-darken-4">
-                    <a href="dist/html/register_group.html">
-                      <img src="src/images/group_003.jpg" class="responsive-img" />
-                    </a>
-                    <h3 class="">Get together and make new memories.</h3>
-                    <p class="flow-text col s12 m10 push-m1">shindig is a unique way to create events and share them instantly with the entire world.</p>
-                  </div>
-                </div>
-              </div>
-              <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">get started!</a>
+    <!-- MAIN CONTENT CONTAINER -->
+    <template id="main_template" type="text/x-handlebars-template">
+      <main class="grey-text">
+        <div class="row margin-top-2">
+          <div class="col s12 m10 l8 push-m1 push-l2">
+            <div class="center white grey-text text-darken-2" id="template_container"></div>
+          </div>
+        </div>
+      </main>
+    </template>
+
+    <!-- LANDING PAGE -->
+    <template id="landing_template" type="text/x-handlebars-template">
+      <img src="" class="responsive-img" onclick="route('register');"/>
+      <h3 class="">Get together and make new memories.</h3>
+      <p class="flow-text col s12 m10 push-m1">shindig is a unique way to create events and share them instantly with the entire world.</p>
+      <a href="route('register')" class="margin-top-2 btn center deep-orange lighten-2 waves-effect waves-light center">get started!</a>
+    </template>
+
+    <!-- REGISTRATION -->
+    <template id="register_template" type="text/x-handlebars-template">
+      <!-- Main registration page -->
+      <div class="container register">
+        <div class="valign-wrapper center">
+          <h4 class="left-align">
+            Choose your preferred sign in method
+            <small class="grey-text text-lighten-1">Don't worry, your choice won't change anything important. This is just your personal preference.</small>
+          </h4>
+          <div class="col s12">
+            <div class="row margin-top-2">
+              <a onclick="connect('facebook');" id="facebook" class="btn blue lighten-1 waves-effect waves-light">facebook</a>
             </div>
-            <!-- TODO clean this section up and come up with better selling points -->
-            <div class="grey-text text-darken-4">
-              <div class="row">
-                <div class="col s4 grey-text text-darken-4">
-                  <h3>Fast</h3>
-                  <span class="flow-text">Our system allows you to connect with anyone in the world at any time.</span>
-                </div>
-                <div class="col s4 grey-text text-darken-4">
-                  <h3>Easy</h3>
-                  <span class="flow-text">Don't want a big hassle? We get you, that's why it only takes three steps to make an event.</span>
-                </div>
-                <div class="col s4 grey-text text-darken-4">
-                  <h3>Fun</h3>
-                  <span class="flow-text">Meeting new people is always fun, but don't take our word for it, share your events and see for yourself.</span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col s4">
-                  <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">more</a>
-                </div>
-                <div class="col s4">
-                  <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">more</a>
-                </div>
-                <div class="col s4">
-                  <a href="#!" class="btn center deep-orange lighten-2 waves-effect waves-light center">more<a>
-                </div>
-              </div>
+            <div class="row margin-top-2">
+              <a onclick="connect('twitter');" id="twitter" class="btn light-blue lighten-1 waves-effect waves-light">twitter</a >
+            </div>
+            <div class="row margin-top-2">
+              <a onclick="connect('google');" id="google" class="btn red lighten-1 waves-effect waves-light">google+</a>
+            </div>
+            <div class="row margin-top-2">
+              <a href="register_email.html" id="email_auth" class="btn waves-effect waves-light">email</a>
             </div>
           </div>
         </div>
       </div>
-    </main>
+    </template>
 
+    <!-- EVENTS -->
+    <template id="events_template" type="text/x-handlebars-template">
+      <h3>Popular Events</h3>
+      <div class="row">
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
+          <h4>Event #1</h4>
+        </div>
+      </div>
+    </template>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src="dist/js/materialize.min.js"></script>
     <script src="dist/js/main.js"></script>
+    <script src="dist/js/templates.js"></script>
+    <script src="dist/js/auth/register.js"></script>
   </body>
 
 </html>

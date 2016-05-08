@@ -61,6 +61,13 @@ ul {
   }
 }
 $font-stack: Helvetica, sans-serif;
-body {
+body, html{
   font: 1rem $font-stack;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+*{
+  margin: 0;
+  padding: 0;
 }

@@ -2,8 +2,10 @@ var gulp = require('gulp'),
   sass = require('gulp-sass'),
   autoprefixer = require('gulp-autoprefixer'),
   include = require('gulp-include'),
-  eslint = require('gulp-eslint');
-
+  eslint = require('gulp-eslint'),
+  jasmine = require('gulp-jasmine'),
+  $ = require('jquery'),
+  notify = require('gulp-notify');
 
 gulp.task("pages", function() {
   console.log('-- gulp is running task "pages"');
@@ -53,4 +55,4 @@ gulp.task('live', function() {
   gulp.watch('src/images/**', ['images']);
 });
 
-gulp.task('default', ['pages', 'styles', 'scripts', 'lint', 'live']);
+gulp.task('default', ['lint', 'pages', 'styles', 'scripts', 'live']);
