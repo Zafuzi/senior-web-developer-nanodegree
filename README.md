@@ -2,15 +2,6 @@
 
 This repository is meant to organize all my code for the Udacity Senior Web Developer Nanodegree. I began this course on 5/2/16.
 
-## Lectures
-
-These are all the files created and used from watching the sections for each course. Each Section may have additional lessons.
-
-Lecture       | Description                                                             | Status   | link
-------------- | ----------------------------------------------------------------------- | -------- | --------------------------------------
-Web Forms     | Learned how to create mobile friendly web forms with usability in mind  | FINISHED | [Web Forms](/Lecture/WebForms)
-Touch Support | Learned how different css selectors can drastically change UX on mobile | WORKING  | [Touch Support](/Lecture/TouchSupport)
-
 ## Projects
 
 These are the descriptions and locations of the source code for each of the five projects done in this course.
