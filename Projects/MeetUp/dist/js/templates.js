@@ -1,13 +1,15 @@
 $(function(){
   if (supportsTemplate()) {
-    landing_page();
-    $(".button-collapse").sideNav();
+
+    window.onload = function () {
+      landing_page();
+      $(".button-collapse").sideNav();
+    }
   } else {
     console.log("not good");
   }
 });
 function landing_page(){
-
   // Populate images
   templates.landing_page.content.querySelector('img').src = 'src/images/group_003.jpg';
   var structure = [templates.nav, templates.main];
@@ -16,7 +18,12 @@ function landing_page(){
     $('body').append(temp);
   }
   $('#template_container').append(document.importNode(templates.landing_page.content, true));
+}
 
+function events(){
+  //TODO get images from database
+  templates.events.content.querySelector('img').src = 'https://unsplash.it/200/200';
+  $('#template_container').append(document.importNode(templates.events.content, true));
 }
 
 var templates = {
@@ -33,5 +40,12 @@ function supportsTemplate() {
 
 function route(template_name){
   $('#template_container').html('');
-  $('#template_container').append(document.importNode(templates[template_name].content, true));
+  switch (template_name) {
+    case 'events':
+      events();
+      break;
+    default:
+      landing_page();
+      break;
+  }
 }

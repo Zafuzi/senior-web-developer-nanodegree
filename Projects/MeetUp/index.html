@@ -96,53 +96,37 @@
           </div>
         </div>
       </div>
+
     </template>
 
     <!-- EVENTS -->
     <template id="events_template" type="text/x-handlebars-template">
       <h3>Popular Events</h3>
       <div class="row">
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
-        </div>
-        <div class="col s12 m6 l4 card-panel valign-wrapper margin-top-1">
-          <h4>Event #1</h4>
+        <div class="col s12 m8 offset-m2 l6 offset-l3">
+          <div class="card-panel grey lighten-5 z-depth-1">
+            <div class="row valign-wrapper">
+              <div class="col s4">
+                <img src="" alt="" class="responsive-img">
+                <!-- notice the "circle" class -->
+              </div>
+              <div class="col s6">
+                <h5 class="black-text flow-text">
+                  Brunch at Jennifer's
+                </h5>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </template>
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
-    <script src="dist/js/materialize.min.js"></script>
-    <script src="dist/js/main.js"></script>
+    <script defer src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+    <script async defer src="dist/js/auth/register.js"></script>
+    <!-- TODO change materialize to only have what I need, or just remove it all together. -->
+    <script async defer src="dist/js/materialize.min.js"></script>
+    <script async defer src="dist/js/main.js"></script>
     <script src="dist/js/templates.js"></script>
-    <script src="dist/js/auth/register.js"></script>
   </body>
 
 </html>
