@@ -5,10 +5,20 @@ var gulp = require('gulp'),
   eslint = require('gulp-eslint'),
   jasmine = require('gulp-jasmine'),
   $ = require('jquery'),
-  notify = require('gulp-notify');
+  notify = require('gulp-notify'),
+  modernizr = require('gulp-modernizr'),
+  minify = require('gulp-minify'),
+  image = require('gulp-image');
+
+
 
 gulp.task("pages", function() {
   console.log('-- gulp is running task "pages"');
+  gulp.src('src/index.html')
+    .pipe(include())
+    .on('error', console.log)
+    .pipe(gulp.dest('dist/'));
+
   gulp.src('src/html/**/*.html')
     .pipe(include())
     .on('error', console.log)
@@ -18,25 +28,35 @@ gulp.task("pages", function() {
 gulp.task('styles', function() {
   console.log('-- gulp is running task "styles"');
   gulp.src('src/sass/**/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
     .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task("scripts", function() {
-  console.log('-- gulp is running task "scripts"');
+gulp.task('compress', function() {
   gulp.src('src/js/**/*.js')
-    .pipe(include())
-    .on('error', console.log)
-    .pipe(gulp.dest('dist/js'));
+    .pipe(minify({
+        ext:{
+            src:'-min.js',
+            min:'.js'
+        },
+        ignoreFiles: ['-min.js']
+    }))
+    .pipe(gulp.dest('dist/js'))
+});
+
+gulp.task('modernizr', function() {
+  gulp.src('src/js/**/*.js')
+    .pipe(modernizr())
+    .pipe(gulp.dest("dist/js"))
 });
 
 gulp.task("images", function() {
   console.log('-- gulp is running task "images"');
   gulp.src('src/images/**')
-    .pipe(include())
+    .pipe(image())
     .on('error', console.log)
     .pipe(gulp.dest('dist/images'));
 });
@@ -49,10 +69,10 @@ gulp.task('lint', function() {
 });
 
 gulp.task('live', function() {
-  gulp.watch('src/js/**/*.js', ['scripts', 'lint']);
+  gulp.watch('src/js/**/*.js', ['lint', 'modernizr', 'compress']);
   gulp.watch('src/sass/**/*.scss', ['styles']);
-  gulp.watch('src/html/**/*.html', ['pages']);
+  gulp.watch('src/index.html', ['pages']);
   gulp.watch('src/images/**', ['images']);
 });
 
-gulp.task('default', ['lint', 'pages', 'styles', 'scripts', 'live']);
+gulp.task('default', ['lint', 'modernizr', 'pages', 'styles', 'images', 'compress', 'live']);

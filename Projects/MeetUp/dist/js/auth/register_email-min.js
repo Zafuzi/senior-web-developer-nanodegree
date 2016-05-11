@@ -2,11 +2,10 @@ $(function() {
   var name_input = $('#fname');
   email_input = $('#email'),
     pass_field = $("#password")[0];
-  var name = name_input.val(),
-    email = email_input.val();
 
   // Sets events for when name and email are supplied.
   $('.email_name_button').click(function(evt) {
+    evt.preventDefault();
     var form = document.getElementById("name-form");
     if (form.checkValidity() == true) {
       $('.signup').slideToggle(500);
@@ -18,33 +17,38 @@ $(function() {
   });
 
   $('.email_submit_button').click(function() {
-    // @TODO Set only for email.
-
-    switch (pwcheck($('#password'))) {
-      case 0:
-        //TODO sign up function
-        break;
-      case 1:
-        pass_field.setCustomValidity("Your password needs a special character: !@#$%^&*");
-        break;
-      case 2:
-        pass_field.setCustomValidity("Your password needs at least one lower case english letter.");
-        break;
-      case 3:
-        pass_field.setCustomValidity("Your password needs at least one number.");
-        break;
-      case 4:
-        pass_field.setCustomValidity("Your password needs at least one upper case english letter.");
-        break;
-      case 5:
-        pass_field.setCustomValidity("Your password needs to be more than 8 characters and less than 100.");
-        break;
-      case 6:
-        pass_field.setCustomValidity("Your password contains an illegal character");
-        break;
-    }
-    var form = $(".finish-form")[0];
+    var form = $("#finish-form")[0];
     if (form.checkValidity() == true) {
+      switch (pwcheck($('#password'))) {
+        case 0:
+          register_user();
+          console.log(pwcheck($('#password')));
+          break;
+        case 1:
+          pass_field.setCustomValidity("Your password needs a special character: !@#$%^&*");
+          console.log(pwcheck($('#password')));
+          break;
+        case 2:
+          pass_field.setCustomValidity("Your password needs at least one lower case english letter.");
+          console.log(pwcheck($('#password')));
+          break;
+        case 3:
+          pass_field.setCustomValidity("Your password needs at least one number.");
+          console.log(pwcheck($('#password')));
+          break;
+        case 4:
+          pass_field.setCustomValidity("Your password needs at least one upper case english letter.");
+          console.log(pwcheck($('#password')));
+          break;
+        case 5:
+          pass_field.setCustomValidity("Your password needs to be more than 8 characters and less than 100.");
+          console.log(pwcheck($('#password')));
+          break;
+        case 6:
+          pass_field.setCustomValidity("Your password contains an illegal character");
+          console.log(pwcheck($('#password')));
+          break;
+      }
       return false;
     }else {
       return form.validationMessage;
@@ -69,6 +73,14 @@ $(function() {
     yearRange: "-100:+0",
   });
 });
+
+function register_user(){
+  var name = $('#fname').val(),
+    email = $('#email').val();
+
+  //TODO send array of options.
+  newUser(email, pass_field.value, name);
+}
 
 function pwcheck(value) {
   // At least one upper case English letter
@@ -104,16 +116,4 @@ function pwcheck(value) {
     error = 6;
   }
   return error;
-}
-
-// TODO MOVE TO AUTH>FIREBASE.JS
-function connect() {
-  var ref = new Firebase("https://shindigevents.firebaseio.com");
-  ref.authWithOAuthPopup("twitter", function(error, authData) {
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:", authData);
-    }
-  });
 }

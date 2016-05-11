@@ -5,6 +5,7 @@ $(function() {
 
   // Sets events for when name and email are supplied.
   $('.email_name_button').click(function(evt) {
+    evt.preventDefault();
     var form = document.getElementById("name-form");
     if (form.checkValidity() == true) {
       $('.signup').slideToggle(500);
@@ -52,7 +53,6 @@ $(function() {
     }else {
       return form.validationMessage;
     }
-
   });
   //add more info check box
   $('#addInfo').click(function() {
