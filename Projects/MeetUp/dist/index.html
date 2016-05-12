@@ -15,7 +15,7 @@
       <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
-            <a onclick="route('landing_page');" class="brand-logo">shindig</a>
+            <a onclick="route('landing_page');" class="brand-logo padding-left-1">shindig</a>
             <a href="#" data-activates="mobile-nav" class="button-collapse">
               <i class="material-icons">menu</i>
             </a>
@@ -171,97 +171,100 @@
       </div>
     </template>
 
+    <!-- MANUAL REGISTRATION -->
     <template id="manual_registration" type="text/x-handlebars-template">
-      <div class="signup">
-        <form id="name-form">
-          <div class="col s12 center grey-text text-darken-1 flow-text">
-            <p class="row deep-orange-text text-lighten-2 flow-text">
-              <b class="deep-orange-text text-lighten-2">let's plan a</b>
-              <small class="grey-text text-lighten-1">
-                ball, barbeque, bash, feast, reception, get-together,
-              </small>
-              <b class="deep-orange-text text-lighten-2">shindig</b>
-            </p>
-          </div>
-          <div class="col s12">
-            <div class="input-field row">
-              <i class="material-icons prefix">account_circle</i>
-              <input type="text" name="fname" id="fname" autocomplete="on" required/>
-              <label for="fname">What's your name?</label>
-            </div>
-          </div>
-          <div class="col s12">
-            <div class="input-field row">
-              <i class="material-icons prefix">email</i>
-              <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="on" required/>
-              <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
-            </div>
-          </div>
-          <div class="row center">
-            <div class="col s12 m6 push-m3">
-              <button class="btn deep-orange lighten-3 email_name_button">Continue</button>
-            </div>
-          </div>
-        </form>
-      </div>
-
-      <div class="">
-        <form class="finish-form hide row flow-text" id="finish-form" onsubmit="return newUser()" autocomplete="on">
-          <div class="col s12">
-            <div class="input-field row">
-              <div class="col s12 center deep-orange-text text-lighten-2">
-                <i class="material-icons large">tag_faces</i>
-                <h4 class="">
-                  Welcome to shindig
-                  <span class="grey-text" id="namedrop">Zach</span>
-                </h4>
-              </div>
-              <h5 class="center col s8 push-s2 grey-text text-lighten-1">
-                Just one more step and you are ready to go.
-              </h5>
-            </div>
-          </div>
-          <p class="small-text grey-text">special character: !@#$%^&amp;*</p>
-          <p class="small-text grey-text">at least one lower case english letter</p>
-          <p class="small-text grey-text">at least one number</p>
-          <p class="small-text grey-text">at least one upper case english letter</p>
-          <p class="small-text grey-text">to be longer than 8 characters and less than 100</p>
-          <div class="col s12">
-            <div class="input-field row">
-              <i class="material-icons prefix">vpn_key</i>
-              <input type="password" name="password" id="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" class="validate" required/>
-              <label for="password" data-success="&#10003;">Choose a good password</label>
-            </div>
-            <div class="col s10 push-s1">
-              <p>
-                <input type="checkbox" id="addInfo"/>
-                <label for="addInfo">Add more info</label>
+      <div class="container">
+        <div class="signup">
+          <form id="name-form" onsubmit="event.preventDefault(); validateForm();">
+            <div class="col s12 center grey-text text-darken-1 flow-text">
+              <p class="row deep-orange-text text-lighten-2 flow-text">
+                <b class="deep-orange-text text-lighten-2">let's plan a</b>
+                <small class="grey-text text-lighten-1">
+                  ball, barbeque, bash, feast, reception, get-together,
+                </small>
+                <b class="deep-orange-text text-lighten-2">shindig</b>
               </p>
-              <div class="moreinfo container hide">
-                <div class="input-field row">
-                  <i class="material-icons prefix">work</i>
-                  <input type="text" name="employer" id="employer"/>
-                  <label for="employer">Employer</label>
+            </div>
+            <div class="col s12">
+              <div class="input-field row">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="text" name="fname" id="fname" autocomplete="on" required/>
+                <label for="fname">What's your name?</label>
+              </div>
+            </div>
+            <div class="col s12">
+              <div class="input-field row">
+                <i class="material-icons prefix">email</i>
+                <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="on" required/>
+                <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
+              </div>
+            </div>
+            <div class="row center">
+              <div class="col s12 m6 push-m3">
+                <button class="btn deep-orange lighten-3 email_name_button">Continue</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="row">
+          <form class="finish-form hide row flow-text" id="finish-form" onsubmit="return newUser()" autocomplete="on">
+            <div class="col s12">
+              <div class="input-field row">
+                <div class="col s12 center deep-orange-text text-lighten-2">
+                  <i class="material-icons large">tag_faces</i>
+                  <h4 class="">
+                    Welcome to shindig
+                    <span class="grey-text" id="namedrop">Zach</span>
+                  </h4>
                 </div>
-                <div class="input-field row">
-                  <i class="material-icons prefix">assignment_ind</i>
-                  <input type="text" name="jobTitle" id="jobTitle"/>
-                  <label for="jobTitle">Job Title</label>
-                </div>
-                <div class="input-field row">
-                  <i class="material-icons prefix">cake</i>
-                  <input type="text" name="birthday" id="birthday"/>
-                  <label for="birthday">Birthday</label>
+                <h5 class="center col s8 push-s2 grey-text text-lighten-1">
+                  Just one more step and you are ready to go.
+                </h5>
+              </div>
+            </div>
+            <p class="small-text grey-text">special character: !@#$%^&amp;*</p>
+            <p class="small-text grey-text">at least one lower case english letter</p>
+            <p class="small-text grey-text">at least one number</p>
+            <p class="small-text grey-text">at least one upper case english letter</p>
+            <p class="small-text grey-text">to be longer than 8 characters and less than 100</p>
+            <div class="col s12">
+              <div class="input-field row">
+                <i class="material-icons prefix">vpn_key</i>
+                <input type="password" name="password" id="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" class="validate" required/>
+                <label for="password" data-success="&#10003;">Choose a good password</label>
+              </div>
+              <div class="col s10 push-s1">
+                <p>
+                  <input type="checkbox" id="addInfo"/>
+                  <label for="addInfo">Add more info</label>
+                </p>
+                <div class="moreinfo container hide">
+                  <div class="input-field row">
+                    <i class="material-icons prefix">work</i>
+                    <input type="text" name="employer" id="employer"/>
+                    <label for="employer">Employer</label>
+                  </div>
+                  <div class="input-field row">
+                    <i class="material-icons prefix">assignment_ind</i>
+                    <input type="text" name="jobTitle" id="jobTitle"/>
+                    <label for="jobTitle">Job Title</label>
+                  </div>
+                  <div class="input-field row">
+                    <i class="material-icons prefix">cake</i>
+                    <input type="text" name="birthday" id="birthday"/>
+                    <label for="birthday">Birthday</label>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row center">
-            <div class="col s12 m6 push-m3">
-              <button class="btn light-blue email_submit_button">Finish</button>
+            <div class="row center">
+              <div class="col s12 m6 push-m3">
+                <button class="btn light-blue email_submit_button">Finish</button>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </template>
 

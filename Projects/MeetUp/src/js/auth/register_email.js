@@ -3,19 +3,6 @@ $(function() {
   email_input = $('#email'),
     pass_field = $("#password")[0];
 
-  // Sets events for when name and email are supplied.
-  $('.email_name_button').click(function(evt) {
-    evt.preventDefault();
-    var form = document.getElementById("name-form");
-    if (form.checkValidity() == true) {
-      $('.signup').slideToggle(500);
-      $('.finish-form').removeClass('hide');
-      return false;
-    }else {
-      return form.validationMessage;
-    }
-  });
-
   $('.email_submit_button').click(function() {
     var form = $("#finish-form")[0];
     if (form.checkValidity() == true) {
@@ -73,6 +60,18 @@ $(function() {
     yearRange: "-100:+0",
   });
 });
+
+// Sets events for when name and email are supplied.
+function validateForm(){
+  var form = document.getElementById("name-form");
+  if (form.checkValidity() == true) {
+    $('.signup').slideToggle(500);
+    $('.finish-form').removeClass('hide');
+    return false;
+  }else {
+    return form.validationMessage;
+  }
+}
 
 function register_user(){
   var name = $('#fname').val(),

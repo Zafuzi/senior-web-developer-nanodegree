@@ -94,7 +94,7 @@ function adduserdata(n, e, id) {
     email_address: e
   });
   alert("User successfully created");
-  window.location.href = "../html/events.html";
+  route('events');
 }
 
 // Used only for creating events without an account, no persistent data.

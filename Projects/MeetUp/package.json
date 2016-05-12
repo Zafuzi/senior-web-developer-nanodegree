@@ -1,0 +1,15 @@
+{
+  "name": "shindig",
+  "version": "1.0.0",
+  "description": "Shindig event planner is a modular approach to building a web app. It uses html5 templating, gulp for SASS and JS processing, and my skills for awesomeness.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

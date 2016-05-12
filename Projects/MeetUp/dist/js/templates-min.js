@@ -39,6 +39,17 @@ function register() {
   });
 }
 
+function email_registration(){
+  // get jqueryui and then once it is loaded, add content to page.
+  var jqDeferred = $.getScript('https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js');
+  jqDeferred.then(function() {
+    AddScript('js/auth/register_email.js');
+    $('#template_container').append(document.importNode(templates.manual_registration.content, true));
+  }, function(err){
+    console.log(err);
+  });
+}
+
 function AddScript(url) {
   var script = document.createElement("script");
   script.type = "text/javascript";
@@ -62,8 +73,6 @@ function events() {
   $(content).find('img').each(function(i){
     $(i).attr('src', 'https://www.unsplash.it/200/200');
   });
-
-
 }
 
 var templates = {
@@ -88,7 +97,7 @@ function route(template_name) {
       $('#template_container').show(500);
       break;
     case 'manual_registration':
-      $('#template_container').append(document.importNode(templates.manual_registration.content, true));
+      email_registration();
       $('#template_container').show(500);
       break;
     case 'register':
