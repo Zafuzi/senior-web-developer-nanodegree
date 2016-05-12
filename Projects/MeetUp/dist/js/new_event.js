@@ -1,1 +1,0 @@
-function new_event_form(){var e=templates.new_event_form.content;$("#template_container").append(document.importNode(e,!0))}$(function(){$("body").html("")});

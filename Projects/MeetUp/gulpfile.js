@@ -11,7 +11,6 @@ var gulp = require('gulp'),
   image = require('gulp-image');
 
 
-
 gulp.task("pages", function() {
   console.log('-- gulp is running task "pages"');
   gulp.src('src/index.html')
@@ -19,16 +18,23 @@ gulp.task("pages", function() {
     .on('error', console.log)
     .pipe(gulp.dest('dist/'));
 
-  gulp.src('src/html/**/*.html')
+  gulp.src('src/html/*.html')
     .pipe(include())
     .on('error', console.log)
     .pipe(gulp.dest('dist/html'));
+
+  gulp.src('src/html/*.tpl')
+    .pipe(include())
+    .on('error', console.log)
+    .pipe(gulp.dest('dist/templates'));
 });
 
 gulp.task('styles', function() {
   console.log('-- gulp is running task "styles"');
   gulp.src('src/sass/**/*.scss')
-    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+    .pipe(sass({
+      outputStyle: 'compressed'
+    }).on('error', sass.logError))
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
@@ -38,11 +44,10 @@ gulp.task('styles', function() {
 gulp.task('compress', function() {
   gulp.src('src/js/**/*.js')
     .pipe(minify({
-        ext:{
-            src:'-min.js',
-            min:'.js'
-        },
-        ignoreFiles: ['-min.js']
+      ext: {
+        min: '-min.js'
+      },
+      ignoreFiles: ['-min.js']
     }))
     .pipe(gulp.dest('dist/js'))
 });
@@ -72,6 +77,8 @@ gulp.task('live', function() {
   gulp.watch('src/js/**/*.js', ['lint', 'modernizr', 'compress']);
   gulp.watch('src/sass/**/*.scss', ['styles']);
   gulp.watch('src/index.html', ['pages']);
+  gulp.watch('src/html/*.html', ['pages']);
+  gulp.watch('src/templates/*.hbs', ['templates']);
   gulp.watch('src/images/**', ['images']);
 });
 

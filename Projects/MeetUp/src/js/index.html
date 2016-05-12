@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>shindig</title>
+    <link href="css/materialize.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <script id="nav_template" type="text/x-handlebars-template">
+      <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper">
+            <a onclick="route('landing_page');" class="brand-logo padding-left-1" style="cursor:pointer;">shindig</a>
+            <a href="#" data-activates="mobile-nav" class="button-collapse">
+              <i class="material-icons">menu</i>
+            </a>
+
+            <!-- NON MOBILE NAVBAR -->
+            <ul class="right hide-on-med-and-down">
+              <li>
+                <a onclick="route('events');" class="">
+                  <i class="material-icons left">event</i>
+                  <span class="hide-on-small-only">Events</span>
+                </a>
+              </li>
+              <li class="right">
+                <a onclick="route('register');" class="btn waves-effect">Login/Register</a>
+              </li>
+            </ul>
+
+            <!-- MOBILE NAVBAR ONLY -->
+            <ul class="side-nav" id="mobile-nav">
+              <!-- TODO add support for profile views. -->
+              <li class="row right-align" id="profile_template_container">
+                <a onclick="route('register'); $('.button-collapse').sideNav('hide');" class="btn waves-effect">Login/Register</a>
+              </li>
+              <li class="row">
+                <a onclick="route('events'); $('.button-collapse').sideNav('hide');" class="">
+                  <i class="material-icons left">event</i>
+                  Events
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </script>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <script id="main_template" type="text/x-handlebars-template">
+      <main class="grey-text">
+        <div class="row margin-top-2">
+          <div class="col s12 m10 l8 push-m1 push-l2">
+
+            <div class="center white grey-text text-darken-2" id="template_container"></div>
+          </div>
+        </div>
+      </main>
+    </script>
+
+    <!-- REGISTRATION -->
+    <script id="register" type="text/x-handlebars-template">
+      <!-- Main registration page -->
+      <div class="container register">
+        <div class="valign-wrapper center">
+          <h4 class="left-align">
+            Choose your preferred sign in method
+            <small class="grey-text text-lighten-1">Don't worry, your choice won't change anything important. This is just your personal preference.</small>
+          </h4>
+          <div class="col s12">
+            <div class="row margin-top-2">
+              <a onclick="connect('facebook');" id="facebook" class="btn blue lighten-1 waves-effect waves-light">facebook</a>
+            </div>
+            <div class="row margin-top-2">
+              <a onclick="connect('twitter');" id="twitter" class="btn light-blue lighten-1 waves-effect waves-light">twitter</a >
+            </div>
+            <div class="row margin-top-2">
+              <a onclick="connect('google');" id="google" class="btn red lighten-1 waves-effect waves-light">google+</a>
+            </div>
+            <div class="row margin-top-2">
+              <a onclick="route('manual_registration');" id="email_auth" class="btn waves-effect waves-light">email</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </script>
+
+    <!-- EVENTS CONTAINER -->
+    <script id="events" type="text/x-handlebars-template">
+      <h3>Popular Events</h3>
+      <div class="row" id="event_container"></div>
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a onclick="route('new_event_form');" class="btn-floating btn-large red">
+          <i class="large material-icons">add</i>
+        </a>
+      </div>
+    </script>
+
+    <!-- Create a new event form -->
+    <script id="new_event_form" type="text/x-handlebars-template">
+      <form autocomplete="on">
+        <div class="card-panel left-align">
+          <h4>What?</h4>
+          <h6 class="grey-text">
+            Tell us about your event
+          </h6>
+          <div class="input-field row">
+            <input type="text" name="event_name" id="event_name"/>
+            <label for="event_name">
+              Event Name
+            </label>
+          </div>
+          <div class="input-field row">
+            <select class="col s12" id="event_select">
+              <option value="" disabled selected>Event Type</option>
+              <option value="" class="circle">Birthday</option>
+              <option value="" class="circle">Wedding</option>
+              <option value="" class="circle">Meeting</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="card-panel left-align">
+          <h4>When?</h4>
+          <h6 class="grey-text">
+            When should everyone show up, and how long should they stay?
+          </h6>
+          <div class="row">
+            <div class='input-field col s6'>
+              <label for="start_date">Start Date</label>
+              <input type="date" class="datepicker" id="start_date" required/>
+            </div>
+
+            <div class='input-field col s6'>
+              <label for="end_date">End Date</label>
+              <input type="date" class="datepicker" id="end_date" required/>
+            </div>
+          </div>
+
+          <div class="row valign-wrapper">
+            <!-- TODO fix this time form and add all the actual date to a function -->
+            <!-- TODO add guest list, location, and optional message -->
+            <div class="col s3 flow-text">
+              Start Time
+            </div>
+            <div class="input-field col s6">
+              <select class="col s6" required>
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select class="col s6">
+                <option value="00" selected>00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
+            </div>
+            <div class='input-field col s3'>
+              <select>
+                <option value="AM" selected>AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row valign-wrapper">
+            <!-- TODO fix this time form and add all the actual date to a function -->
+            <!-- TODO add guest list, location, and optional message -->
+            <div class="col s3 flow-text">
+              End Time
+            </div>
+            <div class="input-field col s6">
+              <select class="col s6">
+                <option value="1" selected>1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+              </select>
+              <select class="col s6">
+                <option value="00" selected>00</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+                <option value="45">45</option>
+              </select>
+            </div>
+            <div class='input-field col s3'>
+              <select>
+                <option value="AM" selected>AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-panel left-align">
+          <h4>Where?</h4>
+          <h6 class="grey-text">
+            Where exactly is this thing anyway?
+          </h6>
+          <div class='input-field row'>
+            <input name="ship-address" placeholder="1234 Random ST" required id="frmAddressS" autocomplete="shipping street-address">
+          </div>
+          <div class='input-field row'>
+            <input name="ship-city" required id="frmCityS" placeholder="Seattle" autocomplete="shipping locality">
+          </div>
+        </div>
+
+        <div class="row">
+          <p>
+            <!-- TODO activate checkboxes -->
+            <input type="checkbox" id="addguests"/>
+            <label for="addInfo">Add a guest list</label>
+          </p>
+          <div class="moreinfo container hide">
+            <div class="card-panel left-align">
+              <!-- TODO make a checkbox option for this -->
+              <h4>Who?</h4>
+              <h6 class="grey-text">
+                Invite your family, your friends, or the entire planet!
+              </h6>
+              <div class='input-field row'>
+                <div class="row">
+                  <div class="input-field col s12">
+                    <textarea id="guestList" class="materialize-textarea"></textarea>
+                    <label for="guestList">Guest List</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <p>
+              <!-- TODO activate checkboxes -->
+              <input type="checkbox" id="addmessages"/>
+              <label for="addInfo">Add a message</label>
+            </p>
+            <div class="moreinfo container hide">
+              <div class="card-panel left-align">
+                <!-- TODO make a checkbox option for this -->
+                <h4>Why?</h4>
+                <h6 class="grey-text">
+                  Tell your guests what makes this event so special. Or don't, it's up to you.
+                </h6>
+                <div class='input-field row'>
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="optional_message" class="materialize-textarea"></textarea>
+                      <label for="optional_message">Write a message to your guests</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row padding-bottom-2">
+              <a onclick="" class="btn waves-effect">Create</a>
+            </div>
+          </form>
+
+          <script>
+            $('select').material_select();
+            $('.datepicker').pickadate({
+              selectMonths: true, // Creates a dropdown to control month
+              selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+          </script>
+        </script>
+
+        <!-- MANUAL REGISTRATION -->
+        <script id="manual_registration" type="text/x-handlebars-template">
+          <div class="container">
+            <div class="signup">
+              <form id="name-form" onsubmit="event.preventDefault(); validateForm();">
+                <div class="col s12 center grey-text text-darken-1 flow-text">
+                  <h3>Sign Up</h3>
+                </div>
+                <div class="col s12">
+                  <div class="input-field row">
+                    <i class="material-icons prefix">account_circle</i>
+                    <label for="fname">What's your name?</label>
+                    <input type="text" name="fname" id="fname" autocomplete="on" required/>
+                  </div>
+                </div>
+                <div class="col s12">
+                  <div class="input-field row">
+                    <i class="material-icons prefix">email</i>
+                    <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
+                    <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="on" required/>
+                  </div>
+                </div>
+                <div class="row center">
+                  <div class="col s12 m6 push-m3">
+                    <button class="btn email_name_button">Continue</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="row">
+              <form class="finish-form hide row flow-text" id="finish-form" onsubmit="return newUser()" autocomplete="on">
+                <div class="col s12">
+                  <div class="input-field row">
+                    <div class="col s12 center">
+                      <i class="material-icons large">tag_faces</i>
+                      <h4 class="">
+                        Welcome to shindig
+                        <span class="grey-text" id="namedrop">Zach</span>
+                      </h4>
+                    </div>
+                    <h5 class="center col s8 push-s2 grey-text text-lighten-1">
+                      Just one more step and you are ready to go.
+                    </h5>
+                  </div>
+                </div>
+                <p class="small-text grey-text">special character: !@#$%^&amp;*</p>
+                <p class="small-text grey-text">at least one lower case english letter</p>
+                <p class="small-text grey-text">at least one number</p>
+                <p class="small-text grey-text">at least one upper case english letter</p>
+                <p class="small-text grey-text">to be longer than 8 characters and less than 100</p>
+                <div class="col s12">
+                  <div class="input-field row">
+                    <i class="material-icons prefix">vpn_key</i>
+                    <label for="password" data-success="&#10003;">Choose a good password</label>
+                    <input type="password" name="password" id="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" class="validate" required/>
+                  </div>
+                  <div class="col s10 push-s1">
+                    <p>
+                      <input type="checkbox" id="addInfo"/>
+                      <label for="addInfo">Add more info</label>
+                    </p>
+                    <div class="moreinfo container hide">
+                      <div class="input-field row">
+                        <i class="material-icons prefix">work</i>
+                        <input type="text" name="employer" id="employer"/>
+                        <label for="employer">Employer</label>
+                      </div>
+                      <div class="input-field row">
+                        <i class="material-icons prefix">assignment_ind</i>
+                        <input type="text" name="jobTitle" id="jobTitle"/>
+                        <label for="jobTitle">Job Title</label>
+                      </div>
+                      <div class="input-field row">
+                        <i class="material-icons prefix">cake</i>
+                        <input type="text" name="birthday" id="birthday"/>
+                        <label for="birthday">Birthday</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row center">
+                  <div class="col s12 m6 push-m3">
+                    <button class="btn light-blue email_submit_button">Finish</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </script>
+
+        <!-- LANDING PAGE -->
+        <script id="landing_page" type="text/x-handlebars-template">
+          <div class="row">
+            <img src="{{image}}" class="responsive-img" onclick="route('register');"/>
+            <h3 class="">{{title}}</h3>
+            <p class="flow-text col s12 m10 push-m1">shindig is a unique way to create events and share them instantly with the entire world.</p>
+          </div>
+          <div class="row">
+            <a onclick="route('register')" class="margin-top-2 margin-bottom-1 btn center waves-effect waves-light center">get started!</a>
+          </div>
+        </script>
+
+        <script src="js/jquery-min.js"></script>
+        <script src="js/handlebars-min.js"></script>
+        <script defer src="js/templates-min.js"></script>
+      </body>
+
+    </html>
