@@ -15,7 +15,7 @@
       <div class="navbar-fixed">
         <nav>
           <div class="nav-wrapper">
-            <a onclick="route('landing_page');" class="brand-logo padding-left-1">shindig</a>
+            <a onclick="route('landing_page');" class="brand-logo padding-left-1" style="cursor:pointer;">shindig</a>
             <a href="#" data-activates="mobile-nav" class="button-collapse">
               <i class="material-icons">menu</i>
             </a>
@@ -70,7 +70,7 @@
         <p class="flow-text col s12 m10 push-m1">shindig is a unique way to create events and share them instantly with the entire world.</p>
       </div>
       <div class="row">
-        <a onclick="route('register')" class="margin-top-2 margin-bottom-1 btn center deep-orange lighten-2 waves-effect waves-light center">get started!</a>
+        <a onclick="route('register')" class="margin-top-2 margin-bottom-1 btn center waves-effect waves-light center">get started!</a>
       </div>
     </template>
 
@@ -101,74 +101,65 @@
       </div>
     </template>
 
-    <!-- EVENTS -->
+    <!-- EVENTS CONTAINER -->
     <template id="events_template" type="text/x-handlebars-template">
       <h3>Popular Events</h3>
+      <div class="row" id="event_container"></div>
+    </template>
+    <!-- Button to create a new event -->
+    <template id="new_event_button" type="text/x-handlebars-template">
+      <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+        <a onclick="route('new_event_form');" class="btn-floating btn-large red">
+          <i class="large material-icons">add</i>
+        </a>
+      </div>
+    </template>
+    <!-- Create a new event form -->
+    <template id="new_event_form" type="text/x-handlebars-template">
+      <div class="input-field row">
+        <input type="text" name="event_name" id="event_name"/>
+        <label for="event_name">
+          Event Name
+        </label>
+      </div>
+
+      <div class="input-field row">
+        <select class="icons">
+          <option value="" disabled selected>Choose the occasion</option>
+          <option value="" data-icon="images/group_003.jpg" class="circle">Birthday</option>
+          <option value="" data-icon="images/group_003.jpg" class="circle">Wedding</option>
+          <option value="" data-icon="images/group_003.jpg" class="circle">Meeting</option>
+        </select>
+      </div>
+
       <div class="row">
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-          <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-              <div class="col s4">
-                <img src="" alt="" class="responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s6">
-                <h5 class="black-text flow-text">
-                  Brunch at Jennifer's
-                </h5>
-              </div>
-            </div>
-          </div>
+        <div class='input-field col s6'>
+          <label for="start_date">Start Date</label>
+          <input type="date" class="datepicker" id="start_date">
         </div>
 
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-          <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-              <div class="col s4">
-                <img src="" alt="" class="responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s6">
-                <h5 class="black-text flow-text">
-                  Brunch at Jennifer's
-                </h5>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-          <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-              <div class="col s4">
-                <img src="" alt="" class="responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s6">
-                <h5 class="black-text flow-text">
-                  Brunch at Jennifer's
-                </h5>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col s12 m8 offset-m2 l6 offset-l3">
-          <div class="card-panel grey lighten-5 z-depth-1">
-            <div class="row valign-wrapper">
-              <div class="col s4">
-                <img src="" alt="" class="responsive-img">
-                <!-- notice the "circle" class -->
-              </div>
-              <div class="col s6">
-                <h5 class="black-text flow-text">
-                  Brunch at Jennifer's
-                </h5>
-              </div>
-            </div>
-          </div>
+        <div class='input-field col s6'>
+          <label for="end_date">End Date</label>
+          <input type="date" class="datepicker" id="end_date">
         </div>
       </div>
+      <div class="row">
+        <!-- TODO fix this time form and add all the actual date to a function -->
+        <!-- TODO add guest list, location, and optional message -->
+        <div class='input-field col s4'>
+          <p class="range-field">
+            <input type="range" id="start_time" min="1" max="12"/>
+          </p>
+        </div>
+
+        <div class='input-field col s4'>
+          <select>
+            <option value="AM" selected>AM</option>
+            <option value="PM">PM</option>
+          </select>
+        </div>
+      </div>
+
     </template>
 
     <!-- MANUAL REGISTRATION -->
@@ -177,31 +168,25 @@
         <div class="signup">
           <form id="name-form" onsubmit="event.preventDefault(); validateForm();">
             <div class="col s12 center grey-text text-darken-1 flow-text">
-              <p class="row deep-orange-text text-lighten-2 flow-text">
-                <b class="deep-orange-text text-lighten-2">let's plan a</b>
-                <small class="grey-text text-lighten-1">
-                  ball, barbeque, bash, feast, reception, get-together,
-                </small>
-                <b class="deep-orange-text text-lighten-2">shindig</b>
-              </p>
+              <h3>Sign Up</h3>
             </div>
             <div class="col s12">
               <div class="input-field row">
                 <i class="material-icons prefix">account_circle</i>
-                <input type="text" name="fname" id="fname" autocomplete="on" required/>
                 <label for="fname">What's your name?</label>
+                <input type="text" name="fname" id="fname" autocomplete="on" required/>
               </div>
             </div>
             <div class="col s12">
               <div class="input-field row">
                 <i class="material-icons prefix">email</i>
-                <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="on" required/>
                 <label for="email" data-error="someone@example.com" data-success="&#10003;">What's your email?</label>
+                <input type="email" name="email" id="email" class="validate" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" autocomplete="on" required/>
               </div>
             </div>
             <div class="row center">
               <div class="col s12 m6 push-m3">
-                <button class="btn deep-orange lighten-3 email_name_button">Continue</button>
+                <button class="btn email_name_button">Continue</button>
               </div>
             </div>
           </form>
@@ -211,7 +196,7 @@
           <form class="finish-form hide row flow-text" id="finish-form" onsubmit="return newUser()" autocomplete="on">
             <div class="col s12">
               <div class="input-field row">
-                <div class="col s12 center deep-orange-text text-lighten-2">
+                <div class="col s12 center">
                   <i class="material-icons large">tag_faces</i>
                   <h4 class="">
                     Welcome to shindig
@@ -231,8 +216,8 @@
             <div class="col s12">
               <div class="input-field row">
                 <i class="material-icons prefix">vpn_key</i>
-                <input type="password" name="password" id="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" class="validate" required/>
                 <label for="password" data-success="&#10003;">Choose a good password</label>
+                <input type="password" name="password" id="password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$" class="validate" required/>
               </div>
               <div class="col s10 push-s1">
                 <p>

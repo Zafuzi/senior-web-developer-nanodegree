@@ -53,11 +53,9 @@ $(function() {
     }
   });
   // datepicker
-  $('#birthday').datepicker({
-    dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    changeYear: true,
-    changeMonth: true,
-    yearRange: "-100:+0",
+  $('#birthday').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15 // Creates a dropdown of 15 years to control year
   });
 });
 
