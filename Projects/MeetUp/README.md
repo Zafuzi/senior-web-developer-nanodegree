@@ -2,7 +2,9 @@
 
 Shindig event planner is a modular approach to building a web app.
 
-| Frameworks used
-| ---------------
-Handlbars       | Templating
-Gulp            | Compile and compress SASS JS and Images
+## Frameworks Used
+
+Handlebars     | Templating
+-------------- | ---------------------------------------
+Gulp           | Compile and compress SASS JS and Images
+MaterializeCSS | UI Design and Animations
