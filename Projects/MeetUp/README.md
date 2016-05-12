@@ -1,3 +1,8 @@
 # Shindig Event Planner
 
-Shindig event planner is a modular approach to building a web app. It uses html5 templating, gulp for SASS and JS processing, and my skills for awesomeness.
+Shindig event planner is a modular approach to building a web app.
+
+| Frameworks used
+| ---------------
+Handlbars       | Templating
+Gulp            | Compile and compress SASS JS and Images
