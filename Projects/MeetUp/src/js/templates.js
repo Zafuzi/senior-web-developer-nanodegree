@@ -1,28 +1,53 @@
-var view, source, template, context, html;
+var view, source, template, context, html, ref;
 $(function() {
+  //get firebase reference
+  var firebase = $.getScript('https://cdn.firebase.com/js/client/2.2.1/firebase.js');
+  firebase.then(function() {
+    ref = new Firebase("https://shindigevents.firebaseio.com");
+    init();
+  }, function(err) {
+    console.log(err);
+  });
+});
 
+function init() {
   if (localStorage) {
+    //build navbar and main container
     structure();
     AddScript('js/modernizr-min.js');
     AddScript('js/materialize-min.js');
     $(window).load(function() {
-      if (localStorage.getItem('state') == null) {
-        route('landing_page');
-      } else {
+      if (localStorage.getItem('state') != null && localStorage.getItem('state') != '') {
         route(localStorage.getItem('state'));
+      }else{
+        route(tern(ref.getAuth(), 'events', 'events'));
       }
       $(".button-collapse").sideNav();
+      $('.collapsible').collapsible({
+        accordian: true
+      });
     });
   } else {
     // No support. Use a fallback such as browser cookies or store on the server.
   }
-});
+}
 
-//Creates navbar and main template_container
 function structure() {
+
   source = $('#nav_template').html();
-  template = Handlebars.compile(source)
-  context = {};
+  template = Handlebars.compile(source);
+  ref = new Firebase("https://shindigevents.firebaseio.com");
+  Handlebars.registerPartial("loginPartial", template);
+  context = tern(ref.getAuth(), {
+    login_option_routing: 'route("events")',
+    login_option_function: 'logout()',
+    login_option_text: 'Logout'
+  }, {
+    login_option_routing: 'route("landing_page")',
+    login_option_function: 'route("register")',
+    login_option_text: 'Login or Register'
+  });
+
   html = template(context);
   $('body').append(html);
 
@@ -33,21 +58,52 @@ function structure() {
   $('body').append(html);
 }
 
-//access to registration/login page
-function register() {
-  // get firebase and then once it is loaded, add content to page.
-  var jqDeferred = $.getScript('https://cdn.firebase.com/js/client/2.2.1/firebase.js');
-  jqDeferred.then(function() {
-    AddScript('js/auth/register.js');
-  }, function(err) {
-    console.log(err);
+function checkLogin() {
+  if(ref.getAuth()){
+    location.reload();
+  }
+}
+
+function tern(condition, option1, option2) {
+  var t = (condition ? option1 : option2);
+  return t;
+}
+
+function logout() {
+  ref.unauth();
+  route('landing_page');
+  location.reload();
+}
+
+function register_template() {
+  $.getScript('js/auth/register.js').then(function() {
+    ref = new Firebase("https://shindigevents.firebaseio.com");
+    var authData = ref.getAuth();
+    if (authData) {
+      $('#template_container').html('');
+      $('#template_container').hide(0);
+      source = $('#register').html();
+      template = Handlebars.compile(source);
+      localStorage.setItem('state', 'register');
+      html = template(context);
+      $('#template_container').append(html);
+      $('#template_container').show(500);
+    } else {
+      route('manual_registration');
+    }
   });
 }
 
 function manual_registration() {
-  // get jqueryui and then once it is loaded, add content to page.
-  var jqDeferred = $.getScript('https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js');
-  jqDeferred.then(function() {
+  var firebase = $.getScript('https://cdn.firebase.com/js/client/2.2.1/firebase.js');
+  firebase.then(function() {
+    AddScript('js/auth/register.js');
+  }, function(err) {
+    console.log(err);
+  });
+
+  var jqUI = $.getScript('https://code.jquery.com/ui/1.12.0-rc.2/jquery-ui.min.js');
+  jqUI.then(function() {
     AddScript('js/auth/register_email.js');
   }, function(err) {
     console.log(err);
@@ -62,12 +118,6 @@ function AddScript(url) {
   document.body.removeChild(document.body.lastChild);
 };
 
-function loadImage(object, url) {
-  object.src = url;
-  $(object).load(function() {
-    console.log('loaded');
-  });
-}
 //make events template
 function events() {
   //TODO get events from database
@@ -80,23 +130,21 @@ function new_event_form() {
 function route(template_name) {
   $('#template_container').html('');
   $('#template_container').hide(0);
-
   source = $('#' + template_name).html();
   template = Handlebars.compile(source);
   localStorage.setItem('state', template_name);
+
   switch (template_name) {
     case 'events':
-      context = {};
+      events();
       $('#template_container').show(500);
       break;
     case 'manual_registration':
       manual_registration();
-      context = {};
       $('#template_container').show(500);
       break;
     case 'register':
-      register();
-      context = {};
+      register_template();
       $('#template_container').show(500);
       break;
     case 'landing_page':
@@ -106,12 +154,10 @@ function route(template_name) {
       $('#template_container').show(500);
       break;
     case 'structure':
-      context = {};
       $('#template_container').show(500);
       break;
     case 'new_event_form':
       new_event_form();
-      context = {};
       $('#template_container').show(500);
       break;
     default:

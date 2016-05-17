@@ -73,10 +73,12 @@ function validateForm(){
 
 function register_user(){
   var name = $('#fname').val(),
-    email = $('#email').val();
+    email = $('#email').val(),
+    employer = $('#employer').val(),
+    jobTitle = $('#jobTitle').val(),
+    birthday = $('#birthday').val();
 
-  //TODO send array of options.
-  newUser(email, pass_field.value, name);
+  register(email, pass_field.value, name, [employer, jobTitle, birthday]);
 }
 
 function pwcheck(value) {

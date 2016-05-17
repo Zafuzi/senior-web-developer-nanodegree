@@ -1,101 +1,95 @@
-var ref;
 $(function() {
-  ref = new Firebase("https://shindigevents.firebaseio.com");
-  attachButtonListeners();
+  getRef();
 });
 
-//adds the listeners for sign in buttons
-function attachButtonListeners() {
-  $('#facebook').click(function() {
-    connect('facebook');
-  });
-  $('#twitter').click(function() {
-    connect('twitter');
-  });
-  $('#google').click(function() {
-    connect('google');
-  });
-  $('#email_auth').click(function() {
-    connect('email');
-  });
+var ref, email = '',
+  password = '',
+  name = '',
+  optional_data = [],
+  user_created = false,
+  id;
+
+function getRef() {
+  ref = new Firebase("https://shindigevents.firebaseio.com");
 }
 
-//REVIEW make sure that all criteria are met
-function connect_email(e, p) {
-  ref.authWithPassword({
-    email: e,
-    password: p
-  }, function(error, authData) {
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:", authData);
-    }
-  });
-}
-
-//TODO create a new user for OAuth sign ins
-function connect(type) {
-  ref.authWithOAuthPopup(type, function(error, authData) {
-    if (error) {
-      console.log("Login Failed!", error);
-    } else {
-      console.log("Authenticated successfully with payload:", authData);
-    }
-  });
-}
-
-/* Creates a new user in the data base using email authentication
- * REVIEW see if this and OAuth can be combined into one method.
- * NOTE May need to change the params, and the method that calls this in register_email.js
- */
-function newUser(email, pass, name, options) {
-  var e = email;
-  var p = pass;
-  var n = name;
-  var o = options;
-  var usercreated = false;
-  var id;
+function register(e, p, n, o) {
+  // Set global data
+  email = e, password = p, name = n, optional_data = o;
+  console.log(e);
   ref.createUser({
-    email: e, //email var here
-    password: p, //pass var here
-    name: n,
+    email: e,
+    password: p,
+    name: n
   }, function(error, userData) {
     if (error) {
+      // handle email errors
       switch (error.code) {
         case "EMAIL_TAKEN":
-          console.log("The new user account cannot be created because the email is already in use.");
+          Materialize.toast('A user with this email already exists in our database.', 4000);
           break;
         case "INVALID_EMAIL":
-          console.log("The specified email is not a valid email.");
+          Materialize.toast('The specified email in not a valid email.', 4000);
           break;
         default:
           console.log("Error creating user:", error);
       }
     } else {
-      usercreated = true;
+      // notify that the user was created and set id
+      user_created = true;
       id = userData.uid;
     }
-    if (usercreated) {
-      connect_email(e, p);
-      adduserdata(n, e, id);
+    if (user_created) {
+      // add new user data to the database
+      adduserdata();
+      // log in the new user
+      connect_email();
+    }
+  });
+}
+
+function login() {
+  email = $('#login_email').val();
+  password = $('#login_pass').val();
+  if (!connect_email()) {
+    Materialize.toast('Welcome back', 2000, 'success');
+    // TODO fix routing to events not reloding the page.
+    route('events');
+  } else {
+    Materialize.toast('User verification failed', 2000);
+  }
+}
+
+function connect_email() {
+  ref.authWithPassword({
+    email: email,
+    password: password
+  }, function(error, authData) {
+    if (error) {
+      console.log(error);
+      return false;
     } else {
-      console.log("For some reason this user was not created.");
+      id = authData.uid;
+      return true;
     }
   });
 }
 
 //adds users data to the data base for persistent storage
-function adduserdata(n, e, id) {
+function adduserdata() {
   var usersRef = ref.child("users/");
   var cref = usersRef.child(id);
   cref.set({
-    first_name: n,
-    email_address: e
+    first_name: name,
+    email_address: email,
+    employer: optional_data[0],
+    jobTitle: optional_data[1],
+    birthday: optional_data[2]
   });
-  alert("User successfully created");
+  Materialize.toast("User successfully created", 2000);
   route('events');
 }
+// TODO Make sure that users get logged in as anonymous if they go to the events page without being logged in
 
 // Used only for creating events without an account, no persistent data.
 function anonymous() {

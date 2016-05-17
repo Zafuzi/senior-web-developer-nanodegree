@@ -10,11 +10,13 @@
     "gulp-concat": "^2.6.0",
     "gulp-declare": "^0.3.0",
     "gulp-handlebars": "^4.0.0",
+    "gulp-jsdoc": "^0.1.5",
     "gulp-wrap": "^0.12.0"
   },
   "scripts": {
+    "start": "gulp",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Zachary Foutz",
   "license": "ISC"
 }

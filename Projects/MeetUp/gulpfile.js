@@ -49,13 +49,13 @@ gulp.task('compress', function() {
       },
       ignoreFiles: ['-min.js']
     }))
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('modernizr', function() {
   gulp.src('src/js/**/*.js')
     .pipe(modernizr())
-    .pipe(gulp.dest("dist/js"))
+    .pipe(gulp.dest("dist/js"));
 });
 
 gulp.task("images", function() {
@@ -74,7 +74,7 @@ gulp.task('lint', function() {
 });
 
 gulp.task('live', function() {
-  gulp.watch('src/js/**/*.js', ['lint', 'modernizr', 'compress']);
+  gulp.watch('src/js/**/*.js', ['compress']);
   gulp.watch('src/sass/**/*.scss', ['styles']);
   gulp.watch('src/index.html', ['pages']);
   gulp.watch('src/html/*.html', ['pages']);
