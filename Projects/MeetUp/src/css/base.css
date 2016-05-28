@@ -1,0 +1,132 @@
+/*TODO MINIFY*/
+
+
+/* Navbar
+-------------------------------------------------- */
+
+.navbar_header {
+  padding-top: 1rem !important;
+}
+.brand {
+  height: 100%;
+  color: #FF5722;
+  font-size: 2rem;
+  font-weight: 300;
+  margin: 1rem;
+  text-decoration: none;
+}
+.brand:hover {
+  color: #FF8A65;
+}
+
+/* Collapse
+-------------------------------------------------- */
+
+.collapse {
+  display: none;
+  padding: 1rem;
+}
+
+/* Icons
+-------------------------------------------------- */
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+/* Shared
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.button {
+  border-radius: 100px;
+}
+.big_icon {
+  font-size: 4rem;
+}
+
+/* Sections
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.section {
+  padding: 8rem 0 7rem;
+  text-align: center;
+}
+.section-heading, .section-description {
+  margin-bottom: 1.2rem;
+}
+
+/* Values
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.banner_one {
+  background-image: url('https://unsplash.it/1920/600?image=4');
+  background-size: cover;
+  color: #FFF;
+  padding-bottom: 25%;
+}
+.banner_two {
+  background-image: url('https://unsplash.it/1920/600?random');
+  background-size: cover;
+  color: #FFF;
+  padding-bottom: 5rem;
+}
+.banner_header {
+  margin-bottom: .5rem;
+  color: #FF5722;
+}
+.banner_sub_header {
+  margin-bottom: .3rem;
+  color: #FFF;
+}
+.banner_description {
+  font-weight: 300;
+}
+
+/* Utils
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+.margin-right-25 {
+  margin-right: .25rem;
+}
+.margin-right-50 {
+  margin-right: .5rem;
+}
+.margin-right-75 {
+  margin-right: .75rem;
+}
+.margin-right-100 {
+  margin-right: 1rem;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+#event_location {
+  width: auto;
+  height: 300px;
+  margin: 10px;
+}

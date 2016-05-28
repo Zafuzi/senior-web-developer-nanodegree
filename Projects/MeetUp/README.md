@@ -1,11 +1,12 @@
 # Shindig Event Planner
 
-Shindig event planner is a modular approach to building a web app.
+Shindig event planner is a web application that allows people to create and share events with their friends.
 
-## Frameworks Used
+[![API Doc](https://doclets.io/DauntlessTech/shindig/master.svg)](https://doclets.io/DauntlessTech/shindig/master)
 
-FRAMEWORK      | ROLE
--------------- | ---------------------------------------
-Handlebars     | Templating
-Gulp           | Compile and compress SASS JS and Images
-MaterializeCSS | UI Design and Animations
+## DEVELOPMENT INSTRUCTIONS
+
+1. git clone <https://github.com/DauntlessTech/shindig>
+2. cd shindig
+3. npm install
+4. npm start
