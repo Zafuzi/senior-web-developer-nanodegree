@@ -1,0 +1,50 @@
+{
+  "name": "shindig",
+  "version": "1.0.0",
+  "description": "Shindig is a small web app that allows users to create events in their browser. It was created as a project for the Senior Front End Developer Nanodegree",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DauntlessTech/shindig.git"
+  },
+  "keywords": [
+    "shindig",
+    "webapp",
+    "firebase",
+    "node",
+    "skeleton",
+    "browsersync"
+  ],
+  "author": "Zachary Foutz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DauntlessTech/shindig/issues"
+  },
+  "homepage": "https://github.com/DauntlessTech/shindig#readme",
+  "devDependencies": {
+    "babel-preset-react": "^6.5.0",
+    "browser-sync": "^2.12.10",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.9",
+    "gulp-concat": "^2.6.0",
+    "gulp-eslint": "^2.0.0",
+    "gulp-filter": "^4.0.0",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-newer": "^1.1.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.6",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "skeleton-framework": "^1.0.10"
+  }
+}
